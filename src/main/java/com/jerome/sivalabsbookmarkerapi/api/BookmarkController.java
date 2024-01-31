@@ -18,18 +18,13 @@ public class BookmarkController {
 
     private final BookmarkService bookmarkService;
 
-    @GetMapping("/all")
-    public List<Bookmark> getAllBookmarks() {
-        return bookmarkService.getAllBookmarks();
+    @GetMapping("/mapper")
+    public BookmarksDTO getPaginatedBookmarksDtoWithMapper(@RequestParam(name = "page", defaultValue = "1") Integer page) {
+        return bookmarkService.getBookmarksWithMapper(page);
     }
 
-    @GetMapping("/paginated")
-    public List<Bookmark> getPaginatedBookmarks(@RequestParam(name = "page", defaultValue = "1") Integer page) {
-        return bookmarkService.getPaginatedBookmarks(page);
-    }
-
-    @GetMapping("/paginated-with-DTO")
-    public BookmarksDTO getPaginatedBookmarksDTO(@RequestParam(name = "page", defaultValue = "1") Integer page) {
-        return bookmarkService.getPaginatedBookmarksDTO(page);
+    @GetMapping("/projection")
+    public BookmarksDTO getPaginatedBookmarksDtoWithProjection(@RequestParam(name = "page", defaultValue = "1") Integer page) {
+        return bookmarkService.getBookmarksWithDtoProjection(page);
     }
 }
