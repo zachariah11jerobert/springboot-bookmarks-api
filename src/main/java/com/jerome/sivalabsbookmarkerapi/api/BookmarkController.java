@@ -23,10 +23,7 @@ public class BookmarkController {
         return bookmarkService.getAllBookmarks();
     }
 
-    @GetMapping("/paginated")
-    public List<Bookmark> getPaginatedBookmarks(@RequestParam(name = "page", defaultValue = "1") Integer page) {
-        return bookmarkService.getPaginatedBookmarks(page);
-    }
+
 
     @GetMapping("/paginated-with-DTO")
     public BookmarksDTO getPaginatedBookmarksDTO(@RequestParam(name = "page", defaultValue = "1") Integer page) {
